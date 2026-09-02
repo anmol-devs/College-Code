@@ -1,0 +1,114 @@
+<!-- 2 - To create a simple functional calculator using HTML, CSS, and JavaScript that can perform basic arithmetic operations. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator Practical</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        /* Container for the calculator */
+        .calculator {
+            width: 300px;
+            background-color: #333;
+            padding: 20px;
+            margin: 50px auto;
+            /* Centers it on screen */
+            border-radius: 10px;
+        }
+
+        /* The screen where numbers appear */
+        #result {
+            width: 90%;
+            height: 50px;
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 20px;
+            padding: 5px;
+        }
+
+        /* Styling the buttons */
+        input[type="button"] {
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Make the 'Clear' and '=' buttons look different */
+        .operator {
+            background-color: orange !important;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>My Functional Calculator</h2>
+
+    <div class="calculator">
+        <input type="text" id="result" disabled>
+
+        <br>
+
+        <input type="button" value="C" class="operator" onclick="clearScreen()">
+        <input type="button" value="/" class="operator" onclick="display('/')">
+        <br>
+
+        <input type="button" value="7" onclick="display('7')">
+        <input type="button" value="8" onclick="display('8')">
+        <input type="button" value="9" onclick="display('9')">
+        <input type="button" value="*" class="operator" onclick="display('*')">
+        <br>
+
+        <input type="button" value="4" onclick="display('4')">
+        <input type="button" value="5" onclick="display('5')">
+        <input type="button" value="6" onclick="display('6')">
+        <input type="button" value="-" class="operator" onclick="display('-')">
+        <br>
+
+        <input type="button" value="1" onclick="display('1')">
+        <input type="button" value="2" onclick="display('2')">
+        <input type="button" value="3" onclick="display('3')">
+        <input type="button" value="+" class="operator" onclick="display('+')">
+        <br>
+
+        <input type="button" value="0" onclick="display('0')">
+        <input type="button" value="." onclick="display('.')">
+        <input type="button" value="=" class="operator" style="width: 135px;" onclick="solve()">
+    </div>
+
+    <script>
+        // 1. Function to show numbers on screen when clicked
+        function display(value) {
+            document.getElementById("result").value += value;
+        }
+
+        // 2. Function to clear the screen
+        function clearScreen() {
+            document.getElementById("result").value = "";
+        }
+
+        // 3. Function to calculate the answer
+        function solve() {
+            let x = document.getElementById("result").value;
+            // eval() is a built-in JS function that does the math for us
+            let y = eval(x);
+            document.getElementById("result").value = y;
+        }
+    </script>
+
+</body>
+
+</html>

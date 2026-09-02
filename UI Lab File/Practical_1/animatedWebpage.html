@@ -1,0 +1,78 @@
+<!-- 1C - To create a simple animated webpage using HTML and CSS by applying keyframe animations, hover effects, and transitions for interactive visual elements. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Animation Practical</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        /* 1. The Moving Box (Keyframe Animation) */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            /* Makes it a circle */
+
+            /* The animation name is 'slide' */
+            /* It takes 3 seconds to finish */
+            /* It repeats forever (infinite) */
+            animation: slide 3s infinite;
+        }
+
+        /* This defines what 'slide' actually does */
+        @keyframes slide {
+            from {
+                margin-left: 0px;
+                background-color: red;
+            }
+
+            to {
+                margin-left: 300px;
+                /* Moves to the right */
+                background-color: yellow;
+            }
+        }
+
+        /* 2. The Button (Hover Effect) */
+        .btn {
+            margin-top: 50px;
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            font-size: 20px;
+            border: none;
+
+            /* This makes the change happen slowly (1 second) */
+            transition: 1s;
+        }
+
+        /* What happens when mouse touches the button */
+        .btn:hover {
+            background-color: green;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>My Animation Practical</h2>
+    <p>The circle moves automatically using Keyframes:</p>
+
+    <div class="box"></div>
+
+    <hr>
+
+    <p>Hover over this button to see Transition:</p>
+    <button class="btn">Hover Me</button>
+
+</body>
+
+</html>

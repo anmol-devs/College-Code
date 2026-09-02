@@ -1,0 +1,97 @@
+<!-- 7 - To Demonstrate how "this" keyword behaves in different contexts : global scope , object methods and standalone functions -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS 'this' Keyword Practical</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #output-box {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            font-weight: bold;
+            color: #333;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Demonstrating the "this" Keyword</h2>
+    <p>Click the buttons to see how 'this' changes in different situations.</p>
+
+    <button onclick="checkGlobal()">1. Global Scope</button>
+    <button onclick="checkObject()">2. Object Method</button>
+    <button onclick="checkFunction()">3. Standalone Function</button>
+
+    <div id="output-box">Result will appear here...</div>
+
+    <script>
+        // Helper function to show text on screen
+        function printResult(text) {
+            document.getElementById("output-box").innerHTML = text;
+        }
+
+        // --- 1. Global Scope Context ---
+        function checkGlobal() {
+            // In the global scope, 'this' refers to the Window (the browser window)
+            console.log(this); 
+            printResult("Global Context: 'this' refers to " + this);
+        }
+
+        // --- 2. Object Method Context ---
+        function checkObject() {
+            // Creating a simple object
+            var student = {
+                firstName: "Rahul",
+                lastName: "Sharma",
+                
+                // This is a method inside the object
+                getFullName: function() {
+                    // Here, 'this' refers to the 'student' object itself
+                    return this.firstName + " " + this.lastName;
+                }
+            };
+
+            var result = student.getFullName();
+            printResult("Object Context: 'this' found the name: " + result);
+        }
+
+        // --- 3. Standalone Function Context ---
+        function simpleFunction() {
+            // Inside a simple function, 'this' usually goes back to the Window (Global)
+            return this;
+        }
+
+        function checkFunction() {
+            var result = simpleFunction();
+            printResult("Function Context: 'this' refers to " + result);
+        }
+
+    </script>
+
+</body>
+</html>

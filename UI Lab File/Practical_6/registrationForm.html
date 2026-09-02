@@ -1,0 +1,107 @@
+<!-- 6 - To create a simple and responsive student registration form using HTML and CSS with basic input validation for user details. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form Practical</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* The Form Container */
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px; /* Won't get wider than 400px */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1565c0;
+        }
+
+        /* Styling Labels and Inputs */
+        label {
+            display: block; /* Puts label on its own line */
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: 100%; /* Full width of container */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensures padding doesn't increase width */
+        }
+
+        /* Styling the Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #1565c0; /* Blue button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0d47a1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Student Registration</h2>
+        
+        <form>
+            <label>Full Name:</label>
+            <input type="text" placeholder="Enter your name" required>
+
+            <label>Email Address:</label>
+            <input type="email" placeholder="Enter your email" required>
+
+            <label>Age:</label>
+            <input type="number" placeholder="18" min="16" max="100" required>
+
+            <label>Select Course:</label>
+            <select required>
+                <option value="">-- Select a Course --</option>
+                <option value="btech">B.Tech</option>
+                <option value="bba">BBA</option>
+                <option value="bca">BCA</option>
+            </select>
+
+            <label>Gender:</label>
+            <div style="margin-bottom: 15px;">
+                <input type="radio" name="gender" required> Male
+                <input type="radio" name="gender"> Female
+            </div>
+
+            <button type="submit" class="submit-btn">Register Now</button>
+        </form>
+    </div>
+
+</body>
+</html>

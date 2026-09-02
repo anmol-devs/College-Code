@@ -1,0 +1,211 @@
+<!-- 10 - To design and develop a personal portfolio website using basic HTML, CSS, and JavaScript that displays personal information, skills, projects, and contact details, while demonstrating the ability to create a structured layout, apply styling, and add basic interactivity. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+    <style>
+        /* General Setup */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+            transition: 0.3s;
+            /* Smooth change for dark mode */
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            padding: 15px;
+            display: flex;
+            /* Arranges items in a row */
+            justify-content: space-between;
+            /* Spreads name and links apart */
+            align-items: center;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            /* Makes list items horizontal */
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: orange;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sections Styling */
+        section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        /* Skills Styling */
+        .skill-list {
+            padding-left: 20px;
+        }
+
+        .skill-list li {
+            margin-bottom: 10px;
+        }
+
+        /* Project Cards */
+        .project-grid {
+            display: flex;
+            gap: 20px;
+        }
+
+        .project-card {
+            flex: 1;
+            /* Each card takes equal width */
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Contact Form (Visual Only) */
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            /* Padding doesn't break width */
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* --- Dark Mode Styles --- */
+        .dark-theme {
+            background-color: #222;
+            color: #eee;
+        }
+
+        .dark-theme .container {
+            background-color: #333;
+            /* Darker card background */
+            color: white;
+        }
+
+        .dark-theme .project-card {
+            background-color: #444;
+            border-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>My Portfolio</h2>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button onclick="toggleDarkMode()" style="background: orange; color: black;">Dark Mode</button></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I am a student passionate about Web Development.</p>
+            <p><strong>Name:</strong> Rahul Sharma</p>
+            <p><strong>Email:</strong> rahul@example.com</p>
+            <p><strong>Location:</strong> Delhi, India</p>
+        </section>
+
+        <section id="skills">
+            <h2>My Skills</h2>
+            <ul class="skill-list">
+                <li>HTML5 & CSS3</li>
+                <li>JavaScript (Basic)</li>
+                <li>Responsive Design</li>
+                <li>Problem Solving</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Calculator App</h3>
+                    <p>A functional calculator made using JS.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Music Player</h3>
+                    <p>An HTML5 audio player with custom styles.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form>
+                <label>Name:</label>
+                <input type="text" placeholder="Your Name">
+
+                <label>Message:</label>
+                <textarea rows="4" placeholder="Your Message"></textarea>
+
+                <button type="button" onclick="alert('Message Sent!')">Send Message</button>
+            </form>
+        </section>
+
+    </div>
+
+    <script>
+        // Simple function to switch themes
+        function toggleDarkMode() {
+            var bodyElement = document.body;
+            // .toggle() adds the class if it's missing, removes it if it's there
+            bodyElement.classList.toggle("dark-theme");
+        }
+    </script>
+
+</body>
+
+</html>

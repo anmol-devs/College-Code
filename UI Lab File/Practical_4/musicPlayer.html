@@ -1,0 +1,71 @@
+<!-- 4 - To design a simple music player using HTML and CSS with an embedded audio control to play audio files on a webpage. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Player Practical</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffeaa7; /* Light yellow background */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;     /* Center vertically */
+            height: 100vh;           /* Full screen height */
+            margin: 0;
+        }
+
+        /* The Music Card */
+        .player-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Soft shadow */
+            text-align: center;
+            width: 300px;
+        }
+
+        /* Album Art Image */
+        .album-art {
+            width: 200px;
+            height: 200px;
+            background-color: #ddd; /* Gray placeholder color */
+            border-radius: 15px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        h2 {
+            margin: 10px 0 5px 0;
+            color: #333;
+        }
+
+        p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        /* Styling the Audio Player Control */
+        audio {
+            width: 100%;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="player-card">
+        <img src="https://via.placeholder.com/200" alt="Album Art" class="album-art">
+
+        <h2>Song Title</h2>
+        <p>Artist Name</p>
+
+        <audio controls>
+            <source src="mysong.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+</body>
+</html>

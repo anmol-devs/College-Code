@@ -1,0 +1,203 @@
+<!-- 9. To write a JavaScript program that manages a product cart system using the LIFO method for adding and removing products, calculates total price, supports doubling prices, sorts products by price, filters products below ₹14,000, and displays the updated product list. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart System (LIFO) Practical</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 { text-align: center; color: #333; }
+
+        /* Inputs area */
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            flex: 1; /* Makes inputs stretch to fill space */
+        }
+
+        /* Buttons Grid */
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two buttons per row */
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* distinct colors for different actions */
+        .btn-add { background-color: #28a745; }    /* Green */
+        .btn-remove { background-color: #dc3545; } /* Red */
+        .btn-action { background-color: #007bff; } /* Blue */
+
+        button:hover { opacity: 0.9; }
+
+        /* Product List Styling */
+        ul {
+            list-style-type: none; /* Removes bullets */
+            padding: 0;
+        }
+
+        li {
+            background-color: #eee;
+            margin: 5px 0;
+            padding: 10px;
+            border-left: 5px solid #007bff;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .total-box {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+            border-top: 2px solid #333;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Shopping Cart (LIFO)</h2>
+
+        <div class="input-group">
+            <input type="text" id="pName" placeholder="Product Name (e.g. Watch)">
+            <input type="number" id="pPrice" placeholder="Price (e.g. 5000)">
+        </div>
+
+        <div class="btn-group">
+            <button class="btn-add" onclick="addProduct()">Push Product (Add)</button>
+            <button class="btn-remove" onclick="removeProduct()">Pop Product (Remove)</button>
+            
+            <button class="btn-action" onclick="doublePrices()">Double Prices</button>
+            <button class="btn-action" onclick="sortCart()">Sort by Price</button>
+            <button class="btn-action" onclick="filterCart()">Filter < ₹14,000</button>
+            <button class="btn-action" onclick="calcTotal()">Calculate Total</button>
+        </div>
+
+        <h3>Current Cart:</h3>
+        <ul id="cartList">
+            </ul>
+
+        <div class="total-box" id="totalDisplay">Total: ₹0</div>
+    </div>
+
+    <script>
+        // 1. Initialize an empty array for the cart
+        var cart = [];
+
+        // 2. Function to Add Product (LIFO Push)
+        function addProduct() {
+            var name = document.getElementById("pName").value;
+            var price = Number(document.getElementById("pPrice").value);
+
+            if(name === "" || price <= 0) {
+                alert("Please enter valid name and price");
+                return;
+            }
+
+            // Create object and push to array
+            var product = { name: name, price: price };
+            cart.push(product);
+            
+            displayCart(); // Update screen
+            
+            // Clear inputs
+            document.getElementById("pName").value = "";
+            document.getElementById("pPrice").value = "";
+        }
+
+        // 3. Function to Remove Product (LIFO Pop)
+        function removeProduct() {
+            if(cart.length === 0) {
+                alert("Cart is empty!");
+                return;
+            }
+            cart.pop(); // Removes the last item added
+            displayCart();
+        }
+
+        // 4. Function to Double Prices (using Map)
+        function doublePrices() {
+            // map() creates a new array with modified items
+            cart = cart.map(function(item) {
+                return { name: item.name, price: item.price * 2 };
+            });
+            displayCart();
+        }
+
+        // 5. Function to Sort by Price (using Sort)
+        function sortCart() {
+            cart.sort(function(a, b) {
+                return a.price - b.price; // Low to High
+            });
+            displayCart();
+        }
+
+        // 6. Function to Filter Items < 14000 (using Filter)
+        function filterCart() {
+            cart = cart.filter(function(item) {
+                return item.price < 14000;
+            });
+            displayCart();
+        }
+
+        // 7. Function to Calculate Total
+        function calcTotal() {
+            var total = 0;
+            for(var i=0; i < cart.length; i++) {
+                total = total + cart[i].price;
+            }
+            document.getElementById("totalDisplay").innerHTML = "Total: ₹" + total;
+        }
+
+        // 8. Helper function to show list on HTML
+        function displayCart() {
+            var list = document.getElementById("cartList");
+            list.innerHTML = ""; // Clear current list
+
+            // Loop through cart and create <li> elements
+            for(var i=0; i < cart.length; i++) {
+                var li = document.createElement("li");
+                li.innerHTML = cart[i].name + " <span>₹" + cart[i].price + "</span>";
+                list.appendChild(li);
+            }
+            
+            // Reset total display when list changes
+            document.getElementById("totalDisplay").innerHTML = "Total: (Click Calculate)";
+        }
+    </script>
+
+</body>
+</html>
