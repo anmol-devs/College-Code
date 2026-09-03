@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "selenium-webdriver": "^4.48.0"
+  },
+  "name": "lab-2",
+  "version": "1.0.0",
+  "description": "Apne ko different different devices ke liye login functionality ko test krenge. Same lab 1 wala use krenge.",
+  "main": "website-test.js",
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  },
+  "scripts": {
+    "test": "node website-test.js"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
